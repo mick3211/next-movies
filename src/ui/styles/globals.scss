@@ -1,0 +1,19 @@
+@import './theme.module.scss';
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    color: white;
+}
+
+button {
+    outline: none;
+    cursor: pointer;
+    border: none;
+}
+
+body {
+    background-color: $eerie;
+}
