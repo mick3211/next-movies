@@ -75,14 +75,17 @@ export const Carousel: React.FC<CarouselProps> = ({
             </button>
             <AnimatePresence>
                 <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{
+                    initial={{
                         position: 'absolute',
                         top: 0,
                         bottom: 0,
                         left: 0,
                         right: 0,
+                        opacity: 0,
+                    }}
+                    animate={{ position: 'relative', opacity: 1 }}
+                    exit={{
+                        position: 'absolute',
                         opacity: 0,
                     }}
                     transition={{ duration: 0.3 }}
