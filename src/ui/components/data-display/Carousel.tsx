@@ -1,10 +1,10 @@
 'use client';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import Styles from './Carousel.module.scss';
 
 interface CarouselProps {
-    children: React.ReactElement[];
+    children: React.ReactElement[] | React.ReactElement;
     changeInterval?: number;
 }
 
@@ -14,14 +14,17 @@ export const Carousel: React.FC<CarouselProps> = ({
 }) => {
     const containerRef = useRef<HTMLDivElement>(null);
     const [currentItemIndex, setCurrentItemIndex] = useState(0);
+    const pages = useMemo(() => {
+        return Array.isArray(children) ? children : [children];
+    }, [children]);
 
     const nextPage = useCallback(() => {
-        setCurrentItemIndex(prev => (prev + 1) % children.length);
-    }, [children.length]);
+        setCurrentItemIndex(prev => (prev + 1) % pages.length);
+    }, [pages.length]);
 
     const prevPage = useCallback(() => {
-        setCurrentItemIndex(prev => (prev - 1) % children.length);
-    }, [children.length]);
+        setCurrentItemIndex(prev => (prev + pages.length - 1) % pages.length);
+    }, [pages.length]);
 
     useEffect(() => {
         const container = containerRef.current;
@@ -73,6 +76,16 @@ export const Carousel: React.FC<CarouselProps> = ({
             >
                 <i className="ri-arrow-right-s-line"></i>
             </button>
+            <div className={Styles.pageIndicatorsWrapper}>
+                {pages.map((_item, index) => (
+                    <span
+                        key={index}
+                        data-selected={index === currentItemIndex}
+                        role="button"
+                        onClick={() => setCurrentItemIndex(index)}
+                    />
+                ))}
+            </div>
             <AnimatePresence>
                 <motion.div
                     initial={{
@@ -91,7 +104,7 @@ export const Carousel: React.FC<CarouselProps> = ({
                     transition={{ duration: 0.3 }}
                     key={currentItemIndex}
                 >
-                    {children.at(currentItemIndex)}
+                    {pages.at(currentItemIndex)}
                 </motion.div>
             </AnimatePresence>
         </div>
