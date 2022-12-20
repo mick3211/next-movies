@@ -9,6 +9,7 @@
     background-color: fade-out($color: theme.$eerie, $amount: 0.5);
     backdrop-filter: blur(24px);
     padding: 2.5rem 0.25rem;
+    box-shadow: 0px 40px 40px 8px rgba(0, 0, 0, 0.16);
 }
 
 .navList {
