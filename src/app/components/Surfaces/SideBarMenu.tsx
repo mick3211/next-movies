@@ -23,7 +23,7 @@ const navLinks = [
         icon: <i className="ri-heart-line"></i>,
         href: '',
     },
-];
+] as const;
 
 export const SideBarMenu: React.FC = () => {
     return (
