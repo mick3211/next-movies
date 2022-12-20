@@ -1,0 +1,64 @@
+.container {
+    min-height: 648px;
+    display: flex;
+    align-items: center;
+}
+
+.backdropWrapper {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: -10;
+    width: 100%;
+    min-height: inherit;
+
+    img {
+        object-fit: cover;
+        object-position: top;
+    }
+}
+
+.tagsContainer {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 4px;
+}
+
+.headerContainer {
+    margin-left: calc(100% / 8);
+    max-width: 632px;
+    text-shadow: 1px 1px 2px black;
+    animation: fadeUp 0.4s ease-out;
+    animation-delay: 0.2s;
+    animation-fill-mode: both;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+
+    p {
+        $line-height: 2rem;
+        line-height: $line-height;
+        max-height: calc($line-height * 3);
+        overflow-y: hidden;
+        animation: inherit;
+        animation-delay: 0.25s;
+    }
+
+    button {
+        animation: inherit;
+        animation-delay: 0.3s;
+    }
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        translate: 0 20px;
+    }
+
+    to {
+        opacity: 1;
+        translate: 0;
+    }
+}
