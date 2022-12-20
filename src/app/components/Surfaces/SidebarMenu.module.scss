@@ -7,7 +7,7 @@
     left: 0;
     z-index: 40;
     background-color: fade-out($color: theme.$eerie, $amount: 0.5);
-    backdrop-filter: blur(2px);
+    backdrop-filter: blur(24px);
     padding: 2.5rem 0.25rem;
 }
 
