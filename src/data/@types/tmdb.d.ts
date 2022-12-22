@@ -1,18 +1,28 @@
 namespace TMDB {
-    export interface Movie {
-        poster_path?: string;
-        adult?: boolean;
-        overview?: string;
-        release_data?: string;
-        genre_ids?: number[];
-        id: number;
-        original_title?: string;
-        original_language?: string;
-        title?: string;
-        backdrop_path?: string | null;
+    interface Media {
         popularity?: number;
-        vote_count?: number;
-        video?: boolean;
+        id: number;
+        poster_path?: string;
+        backdrop_path?: string | null;
+        original_language?: string;
+        genre_ids?: number[];
         vote_average?: number;
+        overview?: string;
+        vote_count?: number;
+    }
+
+    export interface Movie extends Media {
+        adult?: boolean;
+        release_date?: string;
+        original_title?: string;
+        title?: string;
+        video?: boolean;
+    }
+    export interface TV extends Media {
+        first_air_date?: string;
+        original_language?: string;
+        name?: string;
+        original_name?: string;
+        origin_country?: string[];
     }
 }

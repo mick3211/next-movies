@@ -1,0 +1,11 @@
+.sessionsContainer {
+    margin-left: 64px;
+    padding-top: 24px;
+    background-color: #1d1d1d;
+    position: relative;
+    z-index: 1;
+
+    & > :not(:first-child) {
+        margin-top: 2.5rem;
+    }
+}
