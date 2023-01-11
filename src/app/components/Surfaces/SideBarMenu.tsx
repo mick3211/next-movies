@@ -6,7 +6,7 @@ const navLinks = [
     {
         name: 'Início',
         icon: <i className="ri-home-line"></i>,
-        href: '',
+        href: '/',
     },
     {
         name: 'Pesquisar',

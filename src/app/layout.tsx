@@ -18,7 +18,7 @@ export default function RootLayout({
         <html lang="pt-BR">
             <body className={roboto.className}>
                 <SideBarMenu />
-                <main>{children}</main>
+                <main style={{ marginBottom: 32 }}>{children}</main>
             </body>
         </html>
     );

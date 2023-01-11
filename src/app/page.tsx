@@ -4,6 +4,7 @@ import { CardRow } from '@components/layout/CardRow/CardRow';
 import { ApiService, imageBaseURL } from 'data/services/ApiService';
 import { MovieBanner } from './components/data-display/MovieBanner/MovieBanner';
 import { MovieCard } from './components/data-display/MovieCard/MovieCard';
+import Link from 'next/link';
 
 export const revalidate = 60;
 
@@ -69,6 +70,7 @@ export default async function Index() {
                     {popularMovies.results.map(movie => (
                         <MovieBanner
                             key={movie.id}
+                            url={'/movies/' + movie.id}
                             tags={movie.genre_ids?.map(id => genres[id])}
                             title={movie.title as string}
                             rating={
@@ -86,52 +88,69 @@ export default async function Index() {
                 <section id="latest" aria-label="Últimos lançamentos">
                     <CardRow title="Últimos lançamentos">
                         {latest.results.map(item => (
-                            <MovieCard
-                                key={item.id}
-                                image={imageBaseURL + 'w342' + item.poster_path}
-                                title={item.title as string}
-                                rating={
-                                    item.vote_average && item.vote_average / 2
-                                }
-                                tag={
-                                    item.genre_ids && genres[item.genre_ids[0]]
-                                }
-                            />
+                            <Link href={'/movies/' + item.id} key={item.id}>
+                                <MovieCard
+                                    image={
+                                        imageBaseURL + 'w342' + item.poster_path
+                                    }
+                                    title={item.title as string}
+                                    rating={
+                                        item.vote_average &&
+                                        item.vote_average / 2
+                                    }
+                                    tag={
+                                        item.genre_ids &&
+                                        genres[item.genre_ids[0]]
+                                    }
+                                />
+                            </Link>
                         ))}
                     </CardRow>
                 </section>
                 <section id="trendingTv" aria-label="Séries em alta">
                     <CardRow title="Séries em alta" gap="0" colWidth="504px">
                         {trendingTv.results.map(item => (
-                            <MovieCard
-                                key={item.id}
-                                image={imageBaseURL + 'w500' + item.poster_path}
-                                title={item.name as string}
-                                rating={
-                                    item.vote_average && item.vote_average / 2
-                                }
-                                titleSize="2rem"
-                                tag={
-                                    item.genre_ids && genres[item.genre_ids[0]]
-                                }
-                            />
+                            <Link href={'/show/' + item.id} key={item.id}>
+                                <MovieCard
+                                    key={item.id}
+                                    image={
+                                        imageBaseURL + 'w500' + item.poster_path
+                                    }
+                                    title={item.name as string}
+                                    rating={
+                                        item.vote_average &&
+                                        item.vote_average / 2
+                                    }
+                                    titleSize="2rem"
+                                    tag={
+                                        item.genre_ids &&
+                                        genres[item.genre_ids[0]]
+                                    }
+                                />{' '}
+                            </Link>
                         ))}
                     </CardRow>
                 </section>
                 <section id="horror" aria-label="Filmes de terror">
                     <CardRow title="Filmes de terror">
                         {hororMovies.results.map(item => (
-                            <MovieCard
-                                key={item.id}
-                                image={imageBaseURL + 'w342' + item.poster_path}
-                                title={item.title as string}
-                                rating={
-                                    item.vote_average && item.vote_average / 2
-                                }
-                                tag={
-                                    item.genre_ids && genres[item.genre_ids[0]]
-                                }
-                            />
+                            <Link href={'/movies/' + item.id} key={item.id}>
+                                <MovieCard
+                                    key={item.id}
+                                    image={
+                                        imageBaseURL + 'w342' + item.poster_path
+                                    }
+                                    title={item.title as string}
+                                    rating={
+                                        item.vote_average &&
+                                        item.vote_average / 2
+                                    }
+                                    tag={
+                                        item.genre_ids &&
+                                        genres[item.genre_ids[0]]
+                                    }
+                                />{' '}
+                            </Link>
                         ))}
                     </CardRow>
                 </section>

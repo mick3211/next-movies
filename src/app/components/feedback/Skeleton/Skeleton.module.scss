@@ -1,0 +1,15 @@
+.root {
+    animation: loading 1s ease-in-out alternate infinite;
+    animation-fill-mode: both;
+    background-color: lighten($color: #000000, $amount: 50);
+}
+
+@keyframes loading {
+    from {
+        background-color: lighten($color: #000000, $amount: 13);
+    }
+
+    to {
+        background-color: lighten($color: #000000, $amount: 15);
+    }
+}

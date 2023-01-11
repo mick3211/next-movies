@@ -3,11 +3,13 @@ import Image from 'next/image';
 import { Button } from '@components/inputs/Button/Button';
 import { Tag } from '../Tag/Tag';
 import { Rating } from '../Rating/Rating';
+import Link from 'next/link';
 
 interface MovieBannerProps {
     title: string;
     backdrop: string;
     description?: string;
+    url?: string;
     tags?: string[];
     rating?: number;
 }
@@ -18,6 +20,7 @@ export const MovieBanner: React.FC<MovieBannerProps> = ({
     title,
     tags,
     rating,
+    url,
 }) => {
     return (
         <div className={Styles.container}>
@@ -32,10 +35,19 @@ export const MovieBanner: React.FC<MovieBannerProps> = ({
                 {rating && <Rating value={rating} />}
                 <h1>{title}</h1>
                 {description && <p>{description}</p>}
-                <Button data-variant="gradient">Assistir agora</Button>
+                {url && (
+                    <Link href={url}>
+                        <Button data-variant="gradient">Assistir agora</Button>
+                    </Link>
+                )}
             </div>
             <div className={Styles.backdropWrapper}>
-                <Image src={backdrop} alt={'Banner de ' + title} fill />
+                <Image
+                    src={backdrop}
+                    alt={'Banner de ' + title}
+                    fill
+                    quality={100}
+                />
             </div>
         </div>
     );
